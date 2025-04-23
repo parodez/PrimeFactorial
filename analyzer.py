@@ -1,0 +1,71 @@
+class analyzer:
+    def __init__(self, user_input: str):
+        self.str_user_input: str = user_input
+        self.int_user_input: int = 0
+
+    def compute_factorial(self) -> None:
+        """
+        Computes the factorial of a given integer and returns it as a string.
+
+        If the number is negative, returns "undefined" since factorials are not defined 
+        for negative integers. Returns "1" for an input of 0, as 0! is defined to be 1.
+        """
+
+        result: int = 1
+
+        if self.int_user_input < 0:
+            return "undefined"
+        
+        elif self.int_user_input == 0:
+            return "1"
+        
+        else:
+            for i in range(1, self.int_user_input + 1):
+                result *= i
+
+        return self.format_number(number = result)
+    
+    def format_number(self, number,threshold=1e6, small_threshold=1e-3):
+        if abs(number) > threshold or (abs(number) < small_threshold and number != 0):
+            return "{:e}".format(number)
+        else:
+            return str(number)
+
+    def is_prime(self) -> bool:
+        """
+        Determines whether a given integer is a prime number.
+
+        A prime number is a number greater than 1 that has no positive divisors
+        other than 1 and itself.
+        """
+        if self.int_user_input <= 1:
+            return False
+
+        square_root = int(self.int_user_input ** (1/2))
+
+        for i in range(2, square_root + 1):
+            if self.int_user_input % i == 0:
+                return False
+        return True
+        
+    def is_valid(self) -> bool:
+        """
+        Validates whether the input string is a non-empty, valid integer.
+        """
+        if not self.__is_digit() or self.__is_empty():
+            return False
+        
+        self.int_user_input = int(self.str_user_input)
+        return True
+    
+    def __is_digit(self) -> bool:
+        try:
+            int(self.str_user_input)
+            return True
+        except:
+            return False
+
+    def __is_empty(self) -> bool:
+        return (self.str_user_input == '')
+        
+    
