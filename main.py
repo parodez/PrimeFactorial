@@ -71,7 +71,7 @@ class display(Tk):
 
         return configurations
         
-    def clicked(label_prime: Label, label_factorial: Label, entry_number: Entry):
+    def clicked(self, label_prime: Label, label_factorial: Label, entry_number: Entry):
         #Checks if value in entry_number is empty or not a digit
         #Shows a messagebox if either is true
         if not utils.is_valid(entry_number.get()):
@@ -89,7 +89,7 @@ class display(Tk):
                 label_prime.config(text = str_number + " is not a prime number.")
             
             #Comutes the factorial of the number
-            label_factorial.config(text = "The factorial of " + str_number + " is:\n" + compute_factorial(int_number) + ".")
+            label_factorial.config(text = "The factorial of " + str_number + " is:\n" + utils.compute_factorial(int_number) + ".")
 
             #Resets the value in entry_number
             entry_number.delete(0, END)

@@ -42,7 +42,7 @@ def is_valid(x: str) -> bool:
             return True
         return False
     
-    if not __is_digit(x) or __is_empty:
+    if not __is_digit(x) or __is_empty(x):
         return False
     return True
     
