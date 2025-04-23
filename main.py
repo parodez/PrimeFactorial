@@ -1,6 +1,4 @@
-from prime import is_prime
-from factorial import compute_factorial
-from validate import is_digit, is_empty
+import utils
 from tkinter import *
 from tkinter import messagebox
 
@@ -76,7 +74,7 @@ class display(Tk):
     def clicked(label_prime: Label, label_factorial: Label, entry_number: Entry):
         #Checks if value in entry_number is empty or not a digit
         #Shows a messagebox if either is true
-        if is_empty(entry_number.get()) or not is_digit(entry_number.get()):
+        if not utils.is_valid(entry_number.get()):
             messagebox.showinfo(message = "Please input a valid value.")
 
         else:
@@ -85,7 +83,7 @@ class display(Tk):
             int_number: int = int(str_number)
             
             #Checks if int_number is prime
-            if is_prime(int_number):
+            if utils.is_prime(int_number):
                 label_prime.config(text = str_number + f" {int_number}is a prime number.")
             else:
                 label_prime.config(text = str_number + " is not a prime number.")

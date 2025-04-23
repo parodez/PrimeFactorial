@@ -27,7 +27,7 @@ def is_prime(number: int) -> bool:
             return False
         return True
     
-def validate_digit(x: str) -> bool:
+def is_valid(x: str) -> bool:
     # Checks if x is a digit
     def __is_digit(x: str) -> bool:
         try:
