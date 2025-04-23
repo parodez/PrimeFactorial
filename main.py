@@ -58,7 +58,7 @@ class display(Tk):
         # Button configurations
         button: Button = Button(self, text = "Enter", font = ('Arial', 16), width = 1,
                                 height = 1, fg = '#000000', 
-                                command = lambda: clicked(self.label_prime, self.label_factorial, self.entry_number),
+                                command = lambda: self.clicked(self.label_prime, self.label_factorial, self.entry_number),
                                 bg = '#FFC6C6')
         button.grid(row = 3, column = 4, columnspan = 2, rowspan = 1, sticky = N+S+E+W)
         
@@ -73,33 +73,28 @@ class display(Tk):
 
         return configurations
         
+    def clicked(label_prime: Label, label_factorial: Label, entry_number: Entry):
+        #Checks if value in entry_number is empty or not a digit
+        #Shows a messagebox if either is true
+        if is_empty(entry_number.get()) or not is_digit(entry_number.get()):
+            messagebox.showinfo(message = "Please input a valid value.")
 
-
-
-#Is called when button is clicked
-#Takes control of label_prime, label_factorial, and entry_number
-def clicked(label_prime: Label, label_factorial: Label, entry_number: Entry):
-    #Checks if value in entry_number is empty or not a digit
-    #Shows a messagebox if either is true
-    if is_empty(entry_number.get()) or not is_digit(entry_number.get()):
-        messagebox.showinfo(message = "Please input a valid value.")
-
-    else:
-        #Stores processed variables for easy access and readability
-        str_number: str = entry_number.get()
-        int_number: int = int(str_number)
-        
-        #Checks if int_number is prime
-        if is_prime(int_number):
-            label_prime.config(text = str_number + f" {int_number}is a prime number.")
         else:
-            label_prime.config(text = str_number + " is not a prime number.")
-        
-        #Comutes the factorial of the number
-        label_factorial.config(text = "The factorial of " + str_number + " is:\n" + compute_factorial(int_number) + ".")
+            #Stores processed variables for easy access and readability
+            str_number: str = entry_number.get()
+            int_number: int = int(str_number)
+            
+            #Checks if int_number is prime
+            if is_prime(int_number):
+                label_prime.config(text = str_number + f" {int_number}is a prime number.")
+            else:
+                label_prime.config(text = str_number + " is not a prime number.")
+            
+            #Comutes the factorial of the number
+            label_factorial.config(text = "The factorial of " + str_number + " is:\n" + compute_factorial(int_number) + ".")
 
-        #Resets the value in entry_number
-        entry_number.delete(0, END)
+            #Resets the value in entry_number
+            entry_number.delete(0, END)
 
 if __name__ == "__main__":
     window = display()
