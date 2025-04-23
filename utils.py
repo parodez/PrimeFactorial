@@ -1,4 +1,4 @@
-class utils:
+class analyzer:
     def __init__(self, user_input: str):
         self.str_user_input: str = user_input
         self.int_user_input: int = 0
