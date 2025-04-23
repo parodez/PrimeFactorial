@@ -130,6 +130,8 @@ class display(Tk):
         """
         if not utils.is_valid(self.entry_number.get()):
             self.label_error.config(text = "Please input a valid value.")
+            self.label_prime.config(text = "")
+            self.label_factorial.config(text = "")
 
         else:
             self.label_error.config(text = '')
