@@ -2,7 +2,6 @@ class utils:
     def __init__(self):
         self.str_user_input: str = ''
         self.int_user_input: int = 0
-        pass
 
     def compute_factorial(self) -> str:
         """
