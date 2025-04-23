@@ -1,8 +1,7 @@
-import utils
 from tkinter import *
 from tkinter import messagebox
+import utils
 
-#Class for the UI window
 class display(Tk):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -18,7 +17,7 @@ class display(Tk):
         for y in range(10):
             Grid.rowconfigure(self, y, weight=1, uniform='row')
             Label(self, width = 1, bg = '#FFDBDB').grid(row = y, column = 0, sticky = N+S+E+W)
-            
+
         self.configure(background='#FFDBDB')
         self.resizable(False, False)
 
@@ -37,14 +36,18 @@ class display(Tk):
 
     def __widget_configurations(self) -> dict:
         # Label configurations
+
+        # label
         label: Label = Label(self, text = "Enter Number:", font = ('Arial', 16),
                       width = 1, height = 1, fg = '#000000', bg = '#FFDBDB')
         label.grid(row = 1, column = 3, columnspan = 4, rowspan = 1, sticky = N+S+E+W)
         
+        # label_prime
         label_prime: Label = Label(self, text = "", font = ('Arial', 10), width = 1,
                                    height = 1, fg = '#FFDBDB', bg = '#644A07')
         label_prime.grid(row = 4, column = 1, columnspan = 8, rowspan = 2, sticky = N+S+E+W)
       
+        # label_factorial
         label_factorial: Label = Label(self, text = "", font = ('Arial', 10), width = 1,
                                        height = 1, fg = '#FFC6C6', bg = '#594100',
                                        wraplength = 275)
@@ -92,7 +95,3 @@ class display(Tk):
             label_factorial.config(text = f"The factorial of {int_number} is:\n{utils.compute_factorial(int_number)}.")
 
             entry_number.delete(0, END)
-
-if __name__ == "__main__":
-    window = display()
-    window.mainloop()
