@@ -84,12 +84,12 @@ class display(Tk):
             
             #Checks if int_number is prime
             if utils.is_prime(int_number):
-                label_prime.config(text = str_number + f" {int_number}is a prime number.")
+                label_prime.config(text = f" {int_number} is a prime number.")
             else:
-                label_prime.config(text = str_number + " is not a prime number.")
+                label_prime.config(text = f" {int_number} is not a prime number.")
             
             #Comutes the factorial of the number
-            label_factorial.config(text = "The factorial of " + str_number + " is:\n" + utils.compute_factorial(int_number) + ".")
+            label_factorial.config(text = f"The factorial of {int_number} is:\n{utils.compute_factorial(int_number)}.")
 
             #Resets the value in entry_number
             entry_number.delete(0, END)
