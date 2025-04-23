@@ -1,6 +1,6 @@
 class utils:
-    def __init__(self):
-        self.str_user_input: str = ''
+    def __init__(self, user_input: str):
+        self.str_user_input: str = user_input
         self.int_user_input: int = 0
 
     def compute_factorial(self) -> str:
@@ -48,6 +48,8 @@ class utils:
         """
         if not self.__is_digit() or self.__is_empty():
             return False
+        
+        self.int_user_input = int(self.str_user_input)
         return True
     
     def __is_digit(self) -> bool:
