@@ -60,8 +60,6 @@ class utils:
             return False
 
     def __is_empty(self) -> bool:
-        if self.str_user_input == '':
-            return True
-        return False 
+        return (self.str_user_input == '')
         
     
