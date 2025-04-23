@@ -22,7 +22,7 @@ class utils:
         
         else:
             for i in range(1, self.int_user_input + 1):
-                factorial *= i
+                result *= i
 
         return str(result)
 
