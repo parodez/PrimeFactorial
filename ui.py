@@ -1,5 +1,5 @@
 from tkinter import *
-from utils import utils as ut
+from utils import utils
 
 class display(Tk):
     """
@@ -128,7 +128,7 @@ class display(Tk):
         This method relies on utility functions from the `utils` module for input
         validation, prime checking, and factorial computation.
         """
-        user_input = ut(self.entry_number.get())
+        user_input = utils(self.entry_number.get())
 
         if not user_input.is_valid():
             self.label_error.config(text = "Please input a valid value.")
