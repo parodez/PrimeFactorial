@@ -1,9 +1,29 @@
 from tkinter import *
-from tkinter import messagebox
 import utils
 
 class display(Tk):
+    """
+    A Tkinter-based GUI class for checking prime numbers and computing factorials.
+
+    This class sets up the main application window with a fixed grid layout and
+    custom-styled widgets, including labels, an entry field, and a button. It uses
+    an internal method to configure widgets and encapsulates user interaction logic
+    through a button-click handler.
+
+    Attributes are initialized using a widget configuration method, allowing for
+    organized access and modular design.
+    """
     def __init__(self, *args, **kwargs):
+        """
+        Initializes the PrimeFactorial GUI window.
+
+        Sets up the main application window with a fixed size, background color,
+        and grid layout. Configures row and column weights for responsive design.
+        Adds visual grid borders using label widgets, and disables window resizing.
+
+        Initializes and stores widget components including labels, entry field, and button
+        by calling the internal widget configuration method.
+        """
         super().__init__(*args, **kwargs)
         
         self.title('PrimeFactorial')
@@ -36,6 +56,14 @@ class display(Tk):
         self.button = self.__configurations['button']
 
     def __widget_configurations(self) -> dict:
+        """
+        Creates and configures all the widgets used in the PrimeFactorial GUI.
+
+        This method initializes labels, an entry field, and a button with specified
+        styles, colors, fonts, and placements using the Tkinter grid layout. It 
+        returns a dictionary containing references to each widget so they can be 
+        accessed and managed elsewhere in the class.
+        """
         color1: str = '#F5EEDD'
         color2: str = '#7AE2CF'
         color3: str = '#077A7D'
@@ -90,12 +118,22 @@ class display(Tk):
         return configurations
         
     def clicked(self):
+        """
+        Handles the logic executed when the 'Enter' button is clicked.
+
+        Validates the input from the entry field to ensure it is a non-empty,
+        numeric value. If the input is invalid, displays an error message in the
+        designated error label.
+
+        This method relies on utility functions from the `utils` module for input
+        validation, prime checking, and factorial computation.
+        """
         if not utils.is_valid(self.entry_number.get()):
             self.label_error.config(text = "Please input a valid value.")
 
         else:
             self.label_error.config(text = '')
-            
+
             str_number: str = self.entry_number.get()
             int_number: int = int(str_number)
 
