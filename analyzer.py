@@ -25,10 +25,13 @@ class analyzer:
 
         return self.format_number(number = result)
     
-    def format_number(self, number,threshold=1e6, small_threshold=1e-3):
-        if abs(number) > threshold or (abs(number) < small_threshold and number != 0):
-            return "{:e}".format(number)
-        else:
+    def format_number(self, number,threshold=1e6, small_threshold=1e-3) -> str:
+        try:
+            if abs(number) > threshold or (abs(number) < small_threshold and number != 0):
+                return "{:e}".format(number)
+            else:
+                return str(number)
+        except:
             return str(number)
 
     def is_prime(self) -> bool:
