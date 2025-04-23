@@ -47,7 +47,7 @@ class utils:
         """
         Validates whether the input string is a non-empty, valid integer.
         """
-        if not self.__is_digit(self.str_user_input) or self.__is_empty(self.str_user_input):
+        if not self.__is_digit() or self.__is_empty():
             return False
         return True
     

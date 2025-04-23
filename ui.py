@@ -1,5 +1,5 @@
 from tkinter import *
-import utils
+from utils import utils as ut
 
 class display(Tk):
     """
@@ -101,7 +101,7 @@ class display(Tk):
         # Button configurations
         button: Button = Button(self, text = "Enter", font = ('Arial', 16), width = 1,
                                 height = 1, fg = '#000000', 
-                                command = lambda: self.clicked(),
+                                command = self.clicked,
                                 bg = color2)
         button.grid(row = 3, column = 4, columnspan = 2, rowspan = 1, sticky = N+S+E+W)
         
@@ -128,22 +128,26 @@ class display(Tk):
         This method relies on utility functions from the `utils` module for input
         validation, prime checking, and factorial computation.
         """
-        if not utils.is_valid(self.entry_number.get()):
+        user_input = ut()
+        user_input.str_user_input = self.entry_number.get()
+
+        if not user_input.is_valid():
             self.label_error.config(text = "Please input a valid value.")
             self.label_prime.config(text = "")
             self.label_factorial.config(text = "")
 
         else:
+            user_input.int_user_input = int(user_input.str_user_input)
             self.label_error.config(text = '')
 
             str_number: str = self.entry_number.get()
             int_number: int = int(str_number)
 
-            if utils.is_prime(int_number):
+            if user_input.is_prime():
                 self.label_prime.config(text = f" {int_number} is a prime number.")
             else:
                 self.label_prime.config(text = f" {int_number} is not a prime number.")
             
-            self.label_factorial.config(text = f"The factorial of {int_number} is:\n{utils.compute_factorial(int_number)}.")
+            self.label_factorial.config(text = f"The factorial of {int_number} is:\n{user_input.compute_factorial()}.")
 
         self.entry_number.delete(0, END)
