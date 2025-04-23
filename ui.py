@@ -146,4 +146,4 @@ class display(Tk):
             
             self.label_factorial.config(text = f"The factorial of {int_number} is:\n{utils.compute_factorial(int_number)}.")
 
-            self.entry_number.delete(0, END)
+        self.entry_number.delete(0, END)
