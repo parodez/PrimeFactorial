@@ -1,7 +1,11 @@
 def compute_factorial(number) -> str:
     """
-    
+    Computes the factorial of a given integer and returns it as a string.
+
+    If the number is negative, returns "undefined" since factorials are not defined 
+    for negative integers. Returns "1" for an input of 0, as 0! is defined to be 1.
     """
+
     factorial: int = 1
 
     if number < 0:
@@ -17,6 +21,12 @@ def compute_factorial(number) -> str:
     return str(factorial)
 
 def is_prime(number: int) -> bool:
+    """
+    Determines whether a given integer is a prime number.
+
+    A prime number is a number greater than 1 that has no positive divisors
+    other than 1 and itself.
+    """
     if number <= 1:
         return False
 
@@ -25,10 +35,16 @@ def is_prime(number: int) -> bool:
     for i in range(2, square_root + 1):
         if number % i == 0:
             return False
-        return True
+    return True
     
 def is_valid(x: str) -> bool:
-    # Checks if x is a digit
+    """
+    Validates whether the input string is a non-empty, valid integer.
+
+    This function checks two conditions:
+    1. The input must be convertible to an integer (i.e., a valid digit).
+    2. The input must not be an empty string.
+    """
     def __is_digit(x: str) -> bool:
         try:
             int(x)
@@ -36,7 +52,6 @@ def is_valid(x: str) -> bool:
         except:
             return False
 
-    # Checks if x is empty
     def __is_empty(x: str) -> bool:
         if x == '':
             return True
