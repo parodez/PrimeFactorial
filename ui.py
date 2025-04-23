@@ -129,7 +129,6 @@ class display(Tk):
         validation, prime checking, and factorial computation.
         """
         user_input = ut(self.entry_number.get())
-        #user_input.str_user_input = self.entry_number.get()
 
         if not user_input.is_valid():
             self.label_error.config(text = "Please input a valid value.")
@@ -137,7 +136,6 @@ class display(Tk):
             self.label_factorial.config(text = "")
 
         else:
-            #user_input.int_user_input = int(user_input.str_user_input)
             self.label_error.config(text = '')
 
             str_number: str = self.entry_number.get()
